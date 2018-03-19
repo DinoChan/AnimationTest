@@ -12,6 +12,20 @@
                   Background="{TemplateBinding Background}">
                 <VisualStateManager.VisualStateGroups>
                     <VisualStateGroup x:Name="CommonStates">
+                        <VisualStateGroup.Transitions>
+                            <VisualTransition To="PointerOver"
+                                              GeneratedDuration="0:0:3">
+                                <VisualTransition.GeneratedEasingFunction>
+                                    <ExponentialEase EasingMode="EaseOut" />
+                                </VisualTransition.GeneratedEasingFunction>
+                            </VisualTransition>
+                            <VisualTransition To="Pressed"
+                                              GeneratedDuration="0:0:3">
+                                <VisualTransition.GeneratedEasingFunction>
+                                    <ExponentialEase EasingMode="EaseOut" />
+                                </VisualTransition.GeneratedEasingFunction>
+                            </VisualTransition>
+                        </VisualStateGroup.Transitions>
                         <VisualState x:Name="Normal" />
                         <VisualState x:Name="PointerOver">
                             <Storyboard>
@@ -53,6 +67,50 @@
 
         <ControlTemplate TargetType="Button"
                          x:Key="ButtonTemplate2">
+            <Grid x:Name="RootGrid"
+                  Background="{TemplateBinding Background}">
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualStateGroup.Transitions >
+                            <VisualTransition GeneratedDuration="0:0:3"/>
+                        </VisualStateGroup.Transitions>
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="PointerOver">
+                            <VisualState.Setters>
+                                <Setter Target="PointOverElement.(UIElement.Opacity)"
+                                        Value="1" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="Pressed">
+                            <VisualState.Setters>
+                                <Setter Target="PressElement.(UIElement.Opacity)"
+                                        Value="1" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="Disabled" />
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
+                <Rectangle Fill="SteelBlue"
+                           Opacity="0"
+                           x:Name="PointOverElement" />
+                <Rectangle Fill="DarkRed"
+                           Opacity="0"
+                           x:Name="PressElement" />
+                <ContentPresenter x:Name="ContentPresenter"
+                                  AutomationProperties.AccessibilityView="Raw"
+                                  BorderBrush="{TemplateBinding BorderBrush}"
+                                  BorderThickness="{TemplateBinding BorderThickness}"
+                                  ContentTemplate="{TemplateBinding ContentTemplate}"
+                                  ContentTransitions="{TemplateBinding ContentTransitions}"
+                                  Content="{TemplateBinding Content}"
+                                  HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                  Padding="{TemplateBinding Padding}"
+                                  VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+            </Grid>
+        </ControlTemplate>
+
+        <ControlTemplate TargetType="Button"
+                         x:Key="ButtonTemplate3">
             <Grid x:Name="RootGrid"
                   Background="{TemplateBinding Background}">
                 <VisualStateManager.VisualStateGroups>
@@ -107,7 +165,7 @@
         </ControlTemplate>
 
         <ControlTemplate TargetType="Button"
-                         x:Key="ButtonTemplate3">
+                         x:Key="ButtonTemplate4">
             <Grid x:Name="RootGrid"
                   Background="{TemplateBinding Background}">
                 <VisualStateManager.VisualStateGroups>
@@ -244,6 +302,9 @@
                         Content="i am a button"
                         Margin="10" />
                 <Button Template="{StaticResource ButtonTemplate3}"
+                        Content="i am a button"
+                        Margin="10" />
+                <Button Template="{StaticResource ButtonTemplate4}"
                         Content="i am a button"
                         Click="OnButtonClick"
                         x:Name="Button"
