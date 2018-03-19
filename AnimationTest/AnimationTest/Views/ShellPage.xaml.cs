@@ -74,6 +74,7 @@ namespace AnimationTest.Views
 
         private void Initialize()
         {
+            IsPaneOpen = true;
             NavigationService.Frame = shellFrame;
             NavigationService.Navigated += Frame_Navigated;
             PopulateNavItems();

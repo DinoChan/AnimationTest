@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
 namespace AnimationTest.Views
@@ -27,5 +27,16 @@ namespace AnimationTest.Views
         }
 
         private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
+        private void OnButtonClick(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            VisualStateManager.GoToState(Button, "Disabled", false);
+        }
+
+        private void Storyboard_Completed(object sender, object e)
+        {
+
+        }
     }
+
 }
