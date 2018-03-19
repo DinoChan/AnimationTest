@@ -30,7 +30,7 @@ namespace AnimationTest.Views
 
         private void OnButtonClick(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            VisualStateManager.GoToState(Button, "Disabled", false);
+            VisualStateManager.GoToState(Button, "Disabled", true);
         }
 
         private void Storyboard_Completed(object sender, object e)
