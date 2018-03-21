@@ -71,8 +71,8 @@
                   Background="{TemplateBinding Background}">
                 <VisualStateManager.VisualStateGroups>
                     <VisualStateGroup x:Name="CommonStates">
-                        <VisualStateGroup.Transitions >
-                            <VisualTransition GeneratedDuration="0:0:3"/>
+                        <VisualStateGroup.Transitions>
+                            <VisualTransition GeneratedDuration="0:0:3" />
                         </VisualStateGroup.Transitions>
                         <VisualState x:Name="Normal" />
                         <VisualState x:Name="PointerOver">
@@ -114,7 +114,8 @@
             <Grid x:Name="RootGrid"
                   Background="{TemplateBinding Background}">
                 <VisualStateManager.VisualStateGroups>
-                    <VisualStateGroup x:Name="CommonStates">
+                    <VisualStateGroup x:Name="CommonStates"
+                                      CurrentStateChanged="CommonStates_CurrentStateChanged">
                         <VisualStateGroup.Transitions>
                             <VisualTransition To="PointerOver"
                                               GeneratedDuration="0:0:3">
@@ -122,7 +123,8 @@
                                     <ExponentialEase EasingMode="EaseOut" />
                                 </VisualTransition.GeneratedEasingFunction>
                             </VisualTransition>
-                            <VisualTransition To="Pressed"
+                            <VisualTransition From="PointerOver"
+                                              To="Pressed"
                                               GeneratedDuration="0:0:3">
                                 <VisualTransition.GeneratedEasingFunction>
                                     <ExponentialEase EasingMode="EaseOut" />
@@ -217,21 +219,21 @@
                                     </DoubleAnimationUsingKeyFrames>
                                 </Storyboard>
                             </VisualTransition>
-                            <VisualTransition To="Disabled" >
+                            <VisualTransition To="Disabled">
                                 <Storyboard Completed="Storyboard_Completed"></Storyboard>
                             </VisualTransition>
                         </VisualStateGroup.Transitions>
                         <VisualState x:Name="Normal" />
                         <VisualState x:Name="PointerOver">
                             <VisualState.Setters>
-                                <Setter Target="PointOverElement.(UIElement.Visibility)"
-                                        Value="Visible" />
+                                <Setter Target="PointOverElement.(UIElement.Opacity)"
+                                        Value="1" />
                             </VisualState.Setters>
                         </VisualState>
                         <VisualState x:Name="Pressed">
                             <VisualState.Setters>
-                                <Setter Target="PressElement.(UIElement.Visibility)"
-                                        Value="Visible" />
+                                <Setter Target="PressElement.(UIElement.Opacity)"
+                                        Value="1" />
                             </VisualState.Setters>
                         </VisualState>
                         <VisualState x:Name="Disabled" />
@@ -256,6 +258,7 @@
             </Grid>
         </ControlTemplate>
 
+   
     </Page.Resources>
     <Grid x:Name="ContentArea"
           Margin="{StaticResource MediumLeftRightMargin}">
@@ -309,6 +312,7 @@
                         Click="OnButtonClick"
                         x:Name="Button"
                         Margin="10" />
+             
             </StackPanel>
             <!--The SystemControlPageBackgroundChromeLowBrush background represents where you should place your content. 
                 Place your content here.-->

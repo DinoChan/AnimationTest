@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -35,8 +36,15 @@ namespace AnimationTest.Views
 
         private void Storyboard_Completed(object sender, object e)
         {
-
+            
         }
+
+        private void CommonStates_CurrentStateChanged(object sender, VisualStateChangedEventArgs e)
+        {
+            Debug.WriteLine(e.OldState?.Name+"  to  "+ e.NewState.Name);
+        }
+
+    
     }
 
 }
